@@ -3,10 +3,17 @@ import 'package:flutter_svg/svg.dart';
 import 'package:spotify_clone_with_flutter/common/appbar/app_bar.dart';
 import 'package:spotify_clone_with_flutter/common/widgets/button/basic_app_button.dart';
 import 'package:spotify_clone_with_flutter/core/configs/assets/app_vectors.dart';
+import 'package:spotify_clone_with_flutter/data/models/create_user_model.dart';
+import 'package:spotify_clone_with_flutter/domain/usescase/register_usecase.dart';
+import 'package:spotify_clone_with_flutter/presentation/home/homepage.dart';
 import 'package:spotify_clone_with_flutter/presentation/register_or_signin/signin/signin.dart';
+import 'package:spotify_clone_with_flutter/service.dart';
 
 class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+  RegisterPage({super.key});
+  final TextEditingController _fullName = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +49,27 @@ class RegisterPage extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            BasicAppButton(onPressed: () {}, title: 'Create Account')
+            BasicAppButton(
+                onPressed: () async {
+                  var res = await sl<RegisterUsecase>().call(
+                    params: CreateUserModel(
+                      fullName: _fullName.text.toString(),
+                      email: _email.text.toString(),
+                      password: _password.text.toString(),
+                    ),
+                  );
+                  res.fold((l) {
+                    var snackbar = SnackBar(content: Text(l));
+                    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                  }, (r) {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => HomePage()),
+                        (route) => false);
+                  });
+                },
+                title: 'Create Account')
           ],
         ),
       ),
@@ -58,6 +85,7 @@ class RegisterPage extends StatelessWidget {
 
   Widget _fullNameField(BuildContext context) {
     return TextField(
+      controller: _fullName,
       decoration: const InputDecoration(hintText: 'Full name')
           .applyDefaults(Theme.of(context).inputDecorationTheme),
     );
@@ -65,6 +93,7 @@ class RegisterPage extends StatelessWidget {
 
   Widget _emailField(BuildContext context) {
     return TextField(
+      controller: _email,
       decoration: const InputDecoration(hintText: 'Email')
           .applyDefaults(Theme.of(context).inputDecorationTheme),
     );
@@ -72,6 +101,7 @@ class RegisterPage extends StatelessWidget {
 
   Widget _passwordField(BuildContext context) {
     return TextField(
+      controller: _password,
       decoration: const InputDecoration(hintText: 'Password')
           .applyDefaults(Theme.of(context).inputDecorationTheme),
     );
@@ -92,11 +122,14 @@ class RegisterPage extends StatelessWidget {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => const SignInPage()));
+                        builder: (BuildContext context) => SignInPage()));
               },
               child: const Text(
                 'Sign In',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.blue),
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.blue),
               ))
         ],
       ),

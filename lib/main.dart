@@ -8,6 +8,7 @@ import 'package:spotify_clone_with_flutter/core/configs/theme/app_theme.dart';
 import 'package:spotify_clone_with_flutter/firebase_options.dart';
 import 'package:spotify_clone_with_flutter/presentation/choose_mode/bloc/theme_cubit.dart';
 import 'package:spotify_clone_with_flutter/presentation/splash/splash_page.dart';
+import 'package:spotify_clone_with_flutter/service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,10 +17,10 @@ Future<void> main() async {
         ? HydratedStorage.webStorageDirectory
         : await getApplicationDocumentsDirectory(),
   );
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
+
+  await initDependencies();
 }
 
 class MyApp extends StatelessWidget {
