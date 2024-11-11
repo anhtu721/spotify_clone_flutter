@@ -39,9 +39,6 @@ class NewSongs extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       shrinkWrap: true,
       itemBuilder: (context, index) {
-        String url =
-            '${AppUrls.coverFirestorage}${songs[index].artist} - ${songs[index].title}.jpg?${AppUrls.mediaAlt}';
-        String encodedUrl = Uri.encodeFull(url);
         return GestureDetector(
           onTap: () {
             // Navigator.push(
@@ -66,8 +63,8 @@ class NewSongs extends StatelessWidget {
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(
-                          // '${AppUrls.coverFirestorage}${songs[index].artist} - ${songs[index].title}.jpg?${AppUrls.mediaAlt}',
-                          encodedUrl,
+                          '${AppUrls.coverFirestorage}${songs[index].artist} - ${songs[index].title}.jpg?${AppUrls.mediaAlt}',
+                          // encodedUrl,
                         ),
                       ),
                     ),
