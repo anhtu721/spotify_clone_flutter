@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:spotify_clone_with_flutter/data/models/create_user_model.dart';
@@ -12,8 +13,12 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
   @override
   Future<Either> signin(SiginUserModel signinUserModel) async {
     try {
+
+
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: signinUserModel.email, password: signinUserModel.password);
+
+          
           return const Right('Sign in was successfull.');
     } on FirebaseAuthException catch (e){
       String messageError = '';
@@ -32,8 +37,12 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
   @override
   Future<Either> register(CreateUserModel createUserModel) async {
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      var data = await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: createUserModel.email, password: createUserModel.password);
+          FirebaseFirestore.instance.collection('Users').add({
+            'name': createUserModel.fullName,
+            'email': data.user?.email,
+          });
           return const Right('Register was successfull.');
     } on FirebaseAuthException catch (e){
       String messageError = '';

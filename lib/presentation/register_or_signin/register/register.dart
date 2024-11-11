@@ -4,7 +4,7 @@ import 'package:spotify_clone_with_flutter/common/appbar/app_bar.dart';
 import 'package:spotify_clone_with_flutter/common/widgets/button/basic_app_button.dart';
 import 'package:spotify_clone_with_flutter/core/configs/assets/app_vectors.dart';
 import 'package:spotify_clone_with_flutter/data/models/create_user_model.dart';
-import 'package:spotify_clone_with_flutter/domain/usescase/register_usecase.dart';
+import 'package:spotify_clone_with_flutter/domain/usescase/auth/register_usecase.dart';
 import 'package:spotify_clone_with_flutter/presentation/home/homepage.dart';
 import 'package:spotify_clone_with_flutter/presentation/register_or_signin/signin/signin.dart';
 import 'package:spotify_clone_with_flutter/service.dart';
@@ -63,9 +63,9 @@ class RegisterPage extends StatelessWidget {
                     ScaffoldMessenger.of(context).showSnackBar(snackbar);
                   }, (r) {
                     Navigator.pushAndRemoveUntil(
-                        context,
+                        context,    
                         MaterialPageRoute(
-                            builder: (BuildContext context) => HomePage()),
+                            builder: (BuildContext context) => const HomePage()),
                         (route) => false);
                   });
                 },

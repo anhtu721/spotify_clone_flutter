@@ -18,9 +18,9 @@ Future<void> main() async {
         : await getApplicationDocumentsDirectory(),
   );
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
-
   await initDependencies();
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
