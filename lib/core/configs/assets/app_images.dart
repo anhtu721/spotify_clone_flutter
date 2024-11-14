@@ -4,4 +4,5 @@ class AppImages {
   static const String choosemodBackground = '${basePath}choose_mode_bg.png';
   static const String registerOrSignupBG = '${basePath}auth_bg.png';
   static const String homeArtist = '${basePath}home_artist.png';
+  static const String profileImage = 'assets/images/profile-circle.png';
 }

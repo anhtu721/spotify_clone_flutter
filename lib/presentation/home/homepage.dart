@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:spotify_clone_with_flutter/common/appbar/app_bar.dart';
+import 'package:spotify_clone_with_flutter/common/widgets/appbar/app_bar.dart';
 import 'package:spotify_clone_with_flutter/common/helpers/is_dark_mode.dart';
 import 'package:spotify_clone_with_flutter/core/configs/assets/app_images.dart';
 import 'package:spotify_clone_with_flutter/core/configs/assets/app_vectors.dart';
 import 'package:spotify_clone_with_flutter/core/configs/theme/app_colors.dart';
+import 'package:spotify_clone_with_flutter/presentation/profile/profile_page.dart';
 import 'package:spotify_clone_with_flutter/presentation/home/widget/new_songs.dart';
+import 'package:spotify_clone_with_flutter/presentation/home/widget/play_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -30,6 +32,16 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       appBar: BasicAppBar(
         hideBack: true,
+        action: IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => const ProfilePage(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.person)),
         title: SvgPicture.asset(
           AppVectors.logo,
           height: 24,
@@ -47,12 +59,14 @@ class _HomePageState extends State<HomePage>
                 controller: _tabController,
                 children: [
                   const NewSongs(),
-                  const NewSongs(),
+                  Container(),
                   Container(),
                   Container()
                 ],
               ),
-            )
+            ),
+            const SizedBox(height: 10),
+            const PlayList(),
           ],
         ),
       ),

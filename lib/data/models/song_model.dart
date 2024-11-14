@@ -5,31 +5,34 @@ class SongModel {
   String? title;
   String? artist;
   num? duration;
-  Timestamp? releaseDate; // Đã sửa lỗi chính tả ở đây
+  Timestamp? releaseDate;
+  bool? isFavorite;
+  String? songID;
 
-  SongModel({
-    required this.title,
-    required this.artist,
-    required this.duration,
-    required this.releaseDate,
-  });
+  SongModel(
+      {required this.title,
+      required this.artist,
+      required this.duration,
+      required this.releaseDate,
+      required this.isFavorite,
+      required this.songID});
 
   SongModel.fromJson(Map<String, dynamic> data) {
-    title = data['title'] ?? '';  // Cung cấp giá trị mặc định nếu null
-    artist = data['artist'] ?? '';  // Cung cấp giá trị mặc định nếu null
-    duration = data['duration'] ?? 0;  // Cung cấp giá trị mặc định nếu null
-    releaseDate = data['releaseDate'] ?? Timestamp.fromMillisecondsSinceEpoch(0); // Cung cấp giá trị mặc định nếu null
+    title = data['title'];
+    artist = data['artist'];
+    duration = data['duration'];
+    releaseDate = data['releaseDate'];
   }
 }
 
 extension SongModelX on SongModel {
   SongEntity toEntity() {
-    // Kiểm tra null trước khi sử dụng toán tử `!` để tránh lỗi
     return SongEntity(
-      title: title ?? '',  // Cung cấp giá trị mặc định nếu title là null
-      artist: artist ?? '',  // Cung cấp giá trị mặc định nếu artist là null
-      duration: duration ?? 0,  // Cung cấp giá trị mặc định nếu duration là null
-      releaseDate: releaseDate ?? Timestamp.fromMillisecondsSinceEpoch(0),  // Cung cấp giá trị mặc định nếu releaseDate là null
-    );
+        title: title!,
+        artist: artist!,
+        duration: duration!,
+        releaseDate: releaseDate!,
+        isFavorite: isFavorite!,
+        songID: songID!);
   }
 }
