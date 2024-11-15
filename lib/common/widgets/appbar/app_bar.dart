@@ -18,21 +18,21 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         action ?? Container(),
       ],
-      leading: hideBack ? null : IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Container(
-            decoration: BoxDecoration(
-              color: context.isDarkMode
-                  ? Colors.white.withOpacity(0.03)
-                  : Colors.black.withOpacity(0.03),
-              shape: BoxShape.circle,
-            ),
-            child: Icon(Icons.arrow_back_ios_new,
-                size: 24,
-                color: context.isDarkMode ? Colors.white : Colors.black),
-          )),
+      // leading: hideBack ? null : IconButton(
+      //     onPressed: () {
+      //       Navigator.pop(context);
+      //     },
+      //     icon: Container(
+      //       decoration: BoxDecoration(
+      //         color: context.isDarkMode
+      //             ? Colors.white.withOpacity(0.03)
+      //             : Colors.black.withOpacity(0.03),
+      //         shape: BoxShape.circle,
+      //       ),
+      //       child: Icon(Icons.arrow_back_ios_new,
+      //           size: 24,
+      //           color: context.isDarkMode ? Colors.white : Colors.black),
+      //     )),
     );
   }
 
