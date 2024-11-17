@@ -17,7 +17,7 @@ This is a simple Spotify clone application built using Flutter. The app mimics t
 - **Flutter**: Framework for building natively compiled applications for mobile, web, and desktop from a single codebase.
 - **Dart**: Programming language used with Flutter.
 - **Firebase**: Cloud platform for storing music files (Firebase Storage), managing user authentication (Firebase Auth), and storing metadata (Firestore).
-- **Provider**: State management solution for Flutter.
+- **Bloc**: State management solution for Flutter.
 
 ## Setup
 
