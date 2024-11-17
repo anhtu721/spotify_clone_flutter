@@ -43,16 +43,5 @@ To get started with the project, follow these steps:
 ...
 ### Screenshots
 
-
-![Screenshot_1731818023](https://github.com/user-attachments/assets/97f0184e-b761-43d6-bcda-af5dc65eb021)
-![Screenshot_1731622844](https://github.com/user-attachments/assets/b63d1885-7fb3-4641-9465-53f834fa2062)
-![Screenshot_1731818130](https://github.com/user-attachments/assets/53279034-479a-48a5-acdb-232b5523baa1)
-![Screenshot_1731818121](https://github.com/user-attachments/assets/0af24e76-a9ae-4e2d-acef-4fd21a474fe9)
-![Screenshot_1731818120](https://github.com/user-attachments/assets/e00433ef-dd64-4eea-bec5-91e7e134bc14)
-![Screenshot_1731818115](https://github.com/user-attachments/assets/645c4679-91ac-44e5-a8a8-a8c7f568ba0f)
-![Screenshot_1731818093](https://github.com/user-attachments/assets/0222d095-dcaf-4a0a-bb7f-ccd5fe3a8408)
-![Screenshot_1731818046](https://github.com/user-attachments/assets/e29f0606-324f-4c10-b913-1fbe234250f0)
-![Screenshot_1731818044](https://github.com/user-attachments/assets/86d5139e-8093-4e10-a690-3d9988e5facb)
-![Screenshot_1731818041](https://github.com/user-attachments/assets/0c3b4388-7d50-4f3b-92b9-d98d36e097c9)
-![Screenshot_1731818030](https://github.com/user-attachments/assets/b6678e48-58b7-491b-8dc2-cd7de012b427)
-![Screenshot_1731818026](https://github.com/user-attachments/assets/36c0f458-86e4-4865-a762-253d26b38177)
+![Screenshot_profile](https://github.com/user-attachments/assets/2e275827-b3fc-44cb-97cb-87b397d92f9f)
+![Screenshot_getstated](https://github.com/user-attachments/assets/a264139b-d349-4217-a876-1e99414fa568)
