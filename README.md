@@ -43,5 +43,11 @@ To get started with the project, follow these steps:
 ...
 ### Screenshots
 
-![Screenshot_profile](https://github.com/user-attachments/assets/2e275827-b3fc-44cb-97cb-87b397d92f9f)
-![Screenshot_getstated](https://github.com/user-attachments/assets/a264139b-d349-4217-a876-1e99414fa568)
+
+![Screenshot_getstated](https://github.com/user-attachments/assets/3fdfb206-5277-4acf-8128-bb59bce54472)
+![Screenshot_Mode](https://github.com/user-attachments/assets/f535b376-780f-447b-b319-e2895a6c7eaf)
+![Screenshot_Start](https://github.com/user-attachments/assets/531425b2-118c-4bcc-9d69-a715389a2a77)
+![Screenshot_register](https://github.com/user-attachments/assets/735d512a-1515-4999-bc64-ded36fc5ae34)
+![Screenshot_signin](https://gith![Screens![Screenshot_profile](https://github.com/user-attachments/assets/487545e5-0f07-4994-81c7-ca06cb4f5f9b)
+hot_home](https://github.com/user-attachments/assets/16420097-bf12-49f5-a02d-6f7db16c7bf8)
+ub.com/user-attachments/assets/b52b64ea-65b7-47db-8ec1-7f339eac6c8b)
