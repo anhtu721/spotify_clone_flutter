@@ -8,6 +8,7 @@ import 'package:spotify_clone_with_flutter/data/source/song_firebase_service.dar
 import 'package:spotify_clone_with_flutter/domain/usescase/auth/get_user_usecase.dart';
 import 'package:spotify_clone_with_flutter/domain/usescase/auth/register_usecase.dart';
 import 'package:spotify_clone_with_flutter/domain/usescase/auth/sigin_usecase.dart';
+import 'package:spotify_clone_with_flutter/domain/usescase/auth/update_user_usecase.dart';
 import 'package:spotify_clone_with_flutter/domain/usescase/song/add_or_remove_favorite_songs_usecase.dart';
 import 'package:spotify_clone_with_flutter/domain/usescase/song/get_favorite_songs_usercase.dart';
 import 'package:spotify_clone_with_flutter/domain/usescase/song/get_new_songs_usecase.dart';
@@ -29,7 +30,7 @@ Future<void> initDependencies() async {
   sl.registerSingleton<GetPlayListUsecase>(GetPlayListUsecase());
   sl.registerSingleton<AddOrRemoveFavoriteSongsUsecase>(AddOrRemoveFavoriteSongsUsecase());
   sl.registerSingleton<IsFavoriteUsecase>(IsFavoriteUsecase());
-  sl.registerSingleton<GetUserUsecase>(GetUserUsecase());  
+  sl.registerSingleton<GetUserUsecase>(GetUserUsecase());
   sl.registerSingleton<GetFavoriteSongsUsercase>(GetFavoriteSongsUsercase());
-
+  sl.registerSingleton<UpdateUserUsecase>(UpdateUserUsecase());
 }

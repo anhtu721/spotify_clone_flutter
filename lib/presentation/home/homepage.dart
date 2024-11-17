@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:spotify_clone_with_flutter/common/helpers/is_dark_mode.dart';
@@ -19,6 +20,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -40,7 +42,10 @@ class _HomePageState extends State<HomePage>
               ),
             );
           },
-          icon: const Icon(Icons.person),
+          icon: CircleAvatar(
+            backgroundImage: NetworkImage(_auth.currentUser?.photoURL ??
+                AppImages.profileImage), // Đường dẫn ảnh từ Firebase Auth
+          ),
         ),
         title: SvgPicture.asset(
           AppVectors.logo,

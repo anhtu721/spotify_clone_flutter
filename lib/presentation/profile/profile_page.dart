@@ -5,20 +5,29 @@ import 'package:spotify_clone_with_flutter/common/widgets/appbar/app_bar.dart';
 import 'package:spotify_clone_with_flutter/common/widgets/favorite_buton/favorite_button.dart';
 import 'package:spotify_clone_with_flutter/core/configs/constants/app_urls.dart';
 import 'package:spotify_clone_with_flutter/core/configs/theme/app_colors.dart';
+import 'package:spotify_clone_with_flutter/presentation/editprofile/editprofile_page.dart';
 import 'package:spotify_clone_with_flutter/presentation/profile/bloc/favorite_song_cubit.dart';
 import 'package:spotify_clone_with_flutter/presentation/profile/bloc/favorite_song_state.dart';
 import 'package:spotify_clone_with_flutter/presentation/profile/bloc/profile_cubit.dart';
 import 'package:spotify_clone_with_flutter/presentation/profile/bloc/profile_state.dart';
+import 'package:spotify_clone_with_flutter/presentation/profile/logic/logout.dart';
 import 'package:spotify_clone_with_flutter/presentation/song_player/song_player_page.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  bool isDarkMode = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BasicAppBar(
-        bgColor: context.isDarkMode? AppColors.darkGrey: Colors.white,
+        bgColor: context.isDarkMode ? AppColors.darkGrey : Colors.white,
         title: Text(
           'Profile',
           style: TextStyle(
@@ -28,6 +37,44 @@ class ProfilePage extends StatelessWidget {
                   ? AppColors.textAppbarColor
                   : AppColors.textblackColor),
         ),
+        action: PopupMenuButton(
+            color: AppColors.darkGrey,
+            itemBuilder: (BuildContext context) => [
+                  const PopupMenuItem<String>(
+                    value: 'edit',
+                    child: ListTile(
+                        leading: Icon(Icons.edit), title: Text('Edit Profile')),
+                  ),
+                  const PopupMenuItem<String>(
+                    value: 'setting',
+                    child: ListTile(
+                        leading: Icon(Icons.settings), title: Text('Setting')),
+                  ),
+                  const PopupMenuItem<String>(
+                    value: 'about',
+                    child: ListTile(
+                        leading: Icon(Icons.info), title: Text('About')),
+                  ),
+                  const PopupMenuItem<String>(
+                    value: 'logout',
+                    child: ListTile(
+                        leading: Icon(Icons.logout), title: Text('Log out')),
+                  ),
+                ],
+            onSelected: (String value) {
+              if (value == 'edit') {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => const EditprofilePage(),
+                  ),
+                );
+              } else if (value == 'services') {
+              } else if (value == 'about') {
+              } else if (value == 'logout') {
+                handleLogout(context);
+              }
+            }),
       ),
       body: Column(
         children: [

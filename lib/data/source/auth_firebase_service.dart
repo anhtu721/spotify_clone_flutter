@@ -11,6 +11,7 @@ abstract class AuthFirebaseService {
   Future<Either> register(CreateUserModel createUserModel);
   Future<Either> signin(SiginUserModel signinUserModel);
   Future<Either> getUser();
+  Future<Either> updateUser(UserModel userModel);
 }
 
 class AuthFirebaseServiceImpl extends AuthFirebaseService {
@@ -73,6 +74,37 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
       return Right(userEntity);
     } catch (e) {
       return const Left('An error occurred');
+    }
+  }
+
+  @override
+  Future<Either> updateUser(UserModel userModel) async {
+    try {
+      FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+      FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+      final userId = firebaseAuth.currentUser?.uid;
+      if (userId == null) {
+        return const Left('User is not logged in');
+      }
+
+      String? updatedImageUrl = userModel.imageURL ?? AppUrls.personImage;
+
+      Map<String, dynamic> updatedData = {
+        'fullName': userModel.fullName,
+        'email': userModel.email,
+        'imageURL': updatedImageUrl,
+      };
+      await firebaseFirestore
+          .collection('Users')
+          .doc(userId)
+          .update(updatedData);
+
+      if (userModel.imageURL != null && userModel.imageURL!.isNotEmpty) {
+        await firebaseAuth.currentUser?.updatePhotoURL(userModel.imageURL);
+      }
+      return const Right('User information updated successfully.');
+    } catch (e) {
+      return Left('An error occurred while updating user: $e');
     }
   }
 }

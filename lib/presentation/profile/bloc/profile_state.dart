@@ -9,5 +9,18 @@ class ProfileLoaded extends ProfileState {
   ProfileLoaded({required this.userEntity});
 }
 
-class ProfileFailure extends ProfileState {
+class ProfileFailure extends ProfileState {}
+
+class ProfileUpdating extends ProfileState {}
+
+class ProfileUpdateSuccess extends ProfileState {
+  final String message;
+
+  ProfileUpdateSuccess(this.message);
+}
+
+class ProfileUpdateFailure extends ProfileState {
+  final String errorMessage;
+
+  ProfileUpdateFailure(this.errorMessage);
 }
