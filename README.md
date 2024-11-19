@@ -5,7 +5,6 @@ This is a simple Spotify clone application built using Flutter. The app mimics t
 ## Features
 
 - **User Interface**: A clean and responsive design similar to the Spotify app.
-- **Search**: Search for songs, albums, and playlists.
 - **Music Player**: Play, pause, and skip tracks.
 - **Navigation**: Navigate between different sections like Home, Search, Library, and Now Playing.
 - **Audio Streaming**: Integrates with Firebase Storage to stream music files.
